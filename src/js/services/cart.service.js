@@ -9,6 +9,9 @@ angular
   function cartService(teaService) {
     var cart = [];
     return {
+      getCart: function(){
+        return cart
+      },
       addTea: function(id, quantity) {
         // var selectedItem = ( some for loop / filter that finds the item )
         
@@ -35,8 +38,18 @@ angular
         cart.push(tea);
         return cart;
       },
-      getCart: function(){
-        return cart
-      }
-    };
-  }
+      deleteTea: function(id) {
+        console.log(id);
+        var index;
+        for(var i = 0; i<cart.length; i++){
+          if(cart[i]._id===id){
+            index=i;
+            break;
+          }
+        };
+        cart.splice(index, 1);
+        console.log(cart);
+        return cart;
+    }
+  };
+}

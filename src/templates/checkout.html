@@ -1,0 +1,37 @@
+<div>
+  <h2>My Shopping Bag<span class="pull-right">Order Total:</span></h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tea in cart">
+        <td>
+            <h3>{{tea.name}}</h3>
+            <img ng-src="{{tea.imageUrl}}">
+            <p><strong>Price:</strong> {{tea.price| currency}}</p>
+            <p><strong>Caffeine Scale:</strong> {{tea.caffeineScale}}</p>
+            <p><strong>Rating: </strong> {{tea.rating}}</p>
+            <p><strong>In stock:</strong> {{tea.inStock}}</p>
+            <p><strong>Categories:</strong></p>
+            <ul ng-repeat="category in tea.categories">
+              <li>{{category}}</li>
+            </ul>
+        </td>
+        <td>
+          {{tea.quantity}}
+<!--              <p ng-switch="edit">
+                <p ng-switch-when="true">{{tea.quantity}}</p> -->
+        </td>
+        <td>
+           <!-- Cannot figure out how to send tea id !-->
+           <button ng-click="deleteTea(tea._id)" type="button" class="btn btn-warning">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
