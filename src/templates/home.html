@@ -1,5 +1,10 @@
 <div ng-controller="homeCtrl">
 
+<div class="panel panel-danger pull-right">
+  <div class="panel-heading">Checkout</div>
+</div>
+
+
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -26,7 +31,7 @@
         </td>
         <td>
            <h5>Quantity</h5>
-           <select ng-model="tea.quantity">
+           <select ng-model="quantity">
              <option value="1">1</option>
              <option value="2">2</option>
              <option value="3">3</option>
@@ -36,8 +41,9 @@
              <option value="7">7</option>
            </select>
            <!-- Cannot figure out how to send tea id !-->
-           <button ng-click="addTea(tea.id, tea.quantity)" type="button" class="btn btn-warning">Add To Cart</button>
+           <button ng-click="addTea(tea._id, quantity)" type="button" class="btn btn-warning">Add To Cart</button>
         </td>
+      </tr>
     </tbody>
   </table>
 

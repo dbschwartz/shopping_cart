@@ -133,7 +133,7 @@ angular
   var formattedTeaList = [];
 
   function listFormatter(teaList) {
-    formattedList = teaList.map(function(currentObj){
+    formattedTeaList = teaList.map(function(currentObj){
       var instanceObj = {};
       instanceObj._id = currentObj._id;
       instanceObj.name = currentObj.name;
@@ -154,7 +154,7 @@ angular
       instanceObj.categories = currentObj.categories;
       return instanceObj;
     });
-    return formattedList;
+    return formattedTeaList;
   }
 
   function categoryCreator (formattedTeaList) {
@@ -178,11 +178,12 @@ angular
       return formattedTeaList;
     },
     getTea: function(id) {
-      formattedTeaList.forEach(function(tea) {
-        if(eachTeaObject.id===id) {
-         return tea;
+      for(var i = 0; i<formattedTeaList.length; i++){
+        if(formattedTeaList[i]._id===id) {
+          return formattedTeaList[i];
+          break;
         }
-      });
+      };
     }
   };
 
