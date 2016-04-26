@@ -1,1 +1,6 @@
 /* add custom styles */
+.table-cell {border-style: solid;
+             border-width: thin;
+             border-collapse: collapse;
+             font-size: small;
+             }

@@ -2,7 +2,8 @@
 
 angular
   .module('app')
-  .service('teaService', teaService);
+  .service('teaService', teaService)
+  .service('cartService', cartService);
 
 
   function teaService() {
@@ -131,16 +132,18 @@ angular
     }
   ];
 
+var formattedTeaList = [];
+
   function listFormatter(teaList) {
-      var formattedList = teaList.map(function(currentObj){
+      formattedList = teaList.map(function(currentObj){
         var instanceObj = {};
         instanceObj._id = currentObj._id;
-        instanceObj.name = currentObj._name;
+        instanceObj.name = currentObj.name;
         instanceObj.ingredients = currentObj.ingredients;
         instanceObj.caffeineScale = currentObj.caffeineScale;
         instanceObj.price = currentObj.price;
 
-        if (currentObj.inStock=true){
+        if (currentObj.inStock===true){
           instanceObj.inStock = "yes";
         }
         else {
@@ -171,15 +174,37 @@ angular
     }
 
   
-return {
+  return {
 
     getTeaList: function() {
 
     var formattedTeaList = listFormatter(teaList);
     formattedTeaList.categories = categoryCreator(formattedTeaList);
-    console.log(formattedTeaList.categories);
+    console.log(formattedTeaList);
     return formattedTeaList;
-    }
-};
+    },
 
-  }
+    getTea: function(id){
+        formattedTeaList.forEach(function(tea){
+            if(eachTeaObject.id===id){
+             return tea;
+            }
+        });
+    }
+  };
+}
+cartService.$inject = ['teaService'];
+  function cartService(teaService) {
+    var cart = [];
+    return {
+      addTea: function(id, quantity) {
+        console.log(id);
+        var tea = teaService.getTea(id);
+        tea.quantity = quantity;
+        tea.subtotal =  tea.price/100 * quantity;
+        cart.push(tea);
+        console.log(cart);
+        return cart;
+     }
+  };
+}

@@ -1,4 +1,64 @@
 <div ng-controller="homeCtrl">
 
-  {{teaList}}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Tea</th>
+        <th>Information</th>
+        <th>Sort by Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tea in teaList">
+        <td>
+            <img ng-src="{{tea.imageUrl}}">
+        </td>
+        <td>
+            <h5>{{tea.name}}</h5>
+            <p><strong>Price:</strong> {{tea.price/100| currency}}</p>
+            <p><strong>Caffeine Scale:</strong> {{tea.caffeineScale}}</p>
+            <p><strong>Rating: </strong> {{tea.rating}}</p>
+            <p><strong>In stock:</strong> {{tea.inStock}}</p>
+            <p><strong>Categories:</strong></p>
+            <ul ng-repeat="category in tea.categories">
+              <li>{{category}}</li>
+            </ul>
+        </td>
+        <td>
+           <h5>Quantity</h5>
+           <select ng-model="tea.quantity">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+             <option value="6">6</option>
+             <option value="7">7</option>
+           </select>
+           <button ng-click="addTea(tea.id, tea.quantity)" type="button" class="btn btn-warning">Add To Cart</button>
+        </td>
+    </tbody>
+  </table>
+
+<!--  <div ng-repeat="tea in teaList">
+    <div class="row">
+      <div class="col-md-3 table-cell">
+        <img ng-src="{{tea.imageUrl}}">
+      </div>
+      <div class="col-md-6 table-cell">
+        <h5>{{tea.name}}</h5>
+        <p><strong>Price:</strong> {{tea.price/100| currency}}</p>
+        <p><strong>Caffeine Scale:</strong> {{tea.caffeineScale}}</p>
+        <p><strong>Rating: </strong> {{tea.rating}}</p>
+        <p><strong>In stock:</strong> {{tea.inStock}}</p>
+        <p><strong>Categories:</strong></p>
+        <ul ng-repeat="category in tea.categories">
+          <li>{{category}}</li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+
+
+
 </div>
