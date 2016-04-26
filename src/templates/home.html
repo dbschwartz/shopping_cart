@@ -1,7 +1,7 @@
 <div ng-controller="homeCtrl">
 
 <div class="panel panel-danger pull-right">
-  <div class="panel-heading">Checkout</div>
+  <div class="panel-heading">Checkout | Bag: {{cartNotification}}</div>
 </div>
 
 
@@ -20,7 +20,7 @@
         </td>
         <td>
             <h5>{{tea.name}}</h5>
-            <p><strong>Price:</strong> {{tea.price/100| currency}}</p>
+            <p><strong>Price:</strong> {{tea.price| currency}}</p>
             <p><strong>Caffeine Scale:</strong> {{tea.caffeineScale}}</p>
             <p><strong>Rating: </strong> {{tea.rating}}</p>
             <p><strong>In stock:</strong> {{tea.inStock}}</p>

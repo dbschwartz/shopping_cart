@@ -130,10 +130,9 @@ angular
       }
     ];
 
-  var formattedTeaList = [];
 
   function listFormatter(teaList) {
-    formattedTeaList = teaList.map(function(currentObj){
+    return teaList.map(function(currentObj){
       var instanceObj = {};
       instanceObj._id = currentObj._id;
       instanceObj.name = currentObj.name;
@@ -141,21 +140,35 @@ angular
       instanceObj.caffeineScale = currentObj.caffeineScale;
       instanceObj.price = currentObj.price;
 
-      if (currentObj.inStock===true){
+      if (currentObj.inStock){
         instanceObj.inStock = "yes";
       }
       else {
         instanceObj.inStock = "no";
       }
-
+      instanceObj.price = currentObj.price/100;
       instanceObj.rating = currentObj.rating;
       instanceObj.imageUrl = currentObj.imageUrl;
       instanceObj.__v = currentObj.__v;
       instanceObj.categories = currentObj.categories;
       return instanceObj;
     });
-    return formattedTeaList;
   }
+
+  var formattedTeaList = listFormatter(teaList)
+
+  // function listFormatter(teaList) {
+  //   return teaList.map(function(currentObj) {
+  //     if (currentObj.inStock){
+  //       currentObj.inStock = "yes";
+  //     }
+  //     else {
+  //       currentObj.inStock = "no";
+  //     }
+  //     currentObj.price = currentObj.price/10;
+  //     return currentObj;
+  //   });
+  // }
 
   function categoryCreator (formattedTeaList) {
     var categories = [];
@@ -173,7 +186,6 @@ angular
   return {
 
     getTeaList: function() {
-      var formattedTeaList = listFormatter(teaList);
       formattedTeaList.categories = categoryCreator(formattedTeaList);
       return formattedTeaList;
     },

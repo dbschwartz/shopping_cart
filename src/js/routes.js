@@ -15,5 +15,9 @@ function routeConfig($routeProvider)  {
       templateUrl: 'templates/home.html',
       controller: 'homeCtrl'
     })
+    .when('/checkout',{
+      templateUrl: 'templates/checkout.html',
+      controller: 'checkoutCtrl'
+    })
     .otherwise('/');
 }
