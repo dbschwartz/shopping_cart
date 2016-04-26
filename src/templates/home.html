@@ -35,30 +35,11 @@
              <option value="6">6</option>
              <option value="7">7</option>
            </select>
+           <!-- Cannot figure out how to send tea id !-->
            <button ng-click="addTea(tea.id, tea.quantity)" type="button" class="btn btn-warning">Add To Cart</button>
         </td>
     </tbody>
   </table>
-
-<!--  <div ng-repeat="tea in teaList">
-    <div class="row">
-      <div class="col-md-3 table-cell">
-        <img ng-src="{{tea.imageUrl}}">
-      </div>
-      <div class="col-md-6 table-cell">
-        <h5>{{tea.name}}</h5>
-        <p><strong>Price:</strong> {{tea.price/100| currency}}</p>
-        <p><strong>Caffeine Scale:</strong> {{tea.caffeineScale}}</p>
-        <p><strong>Rating: </strong> {{tea.rating}}</p>
-        <p><strong>In stock:</strong> {{tea.inStock}}</p>
-        <p><strong>Categories:</strong></p>
-        <ul ng-repeat="category in tea.categories">
-          <li>{{category}}</li>
-        </ul>
-      </div>
-    </div>
-  </div> -->
-
 
 
 </div>
