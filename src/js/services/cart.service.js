@@ -15,6 +15,13 @@ angular
       getCart: function(){
         return cart
       },
+      getTotal: function(){
+        var total;
+        cart.list.forEach(function(teaObject){
+          total+=subtotal;
+        })
+        return total;
+      },
       addTea: function(id, quantity) {
         // var selectedItem = ( some for loop / filter that finds the item )
         
@@ -29,9 +36,9 @@ angular
         }
     
         for(var i = 0; i<cart.length; i++){
-          if(cart[i]._id===id){
-            cart[i].quantity = cart[i].quantity + quantity;
-            cart[i].subtotal =  cart[i].price * cart[i].quantity;
+          if(cart.list[i]._id===id){
+            cart.list[i].quantity = cart.list[i].quantity + quantity;
+            cart.list[i].subtotal =  cart.list[i].price * cart.list[i].quantity;
             return cart;
           }
         }
@@ -42,8 +49,21 @@ angular
         cart.total += tea.subtotal;
         return cart;
       },
+      editTea: function(id, quantity){
+        console.log("working");
+        var index;
+        for(var i = 0; i<cart.list.length; i++){
+          if(cart.list[i]._id===id){
+            index=i;
+            break;
+          }
+        };
+        cart.list[index].quantity = quantity;
+        cart.list[index].subtotal = cart.list[index].price * quantity;
+        cartService.getTotal()
+
+      },
       deleteTea: function(id) {
-        console.log(id);
         var index;
         for(var i = 0; i<cart.list.length; i++){
           if(cart.list[i]._id===id){

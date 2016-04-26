@@ -22,14 +22,18 @@
               <li>{{category}}</li>
             </ul>
         </td>
-        <td>
-          {{tea.quantity}}
-<!--              <p ng-switch="edit">
-                <p ng-switch-when="true">{{tea.quantity}}</p> -->
+        <td ng-init="edit=false">
+          <div ng-switch="edit">
+            <div ng-switch-when="false">{{tea.quantity}}</div>
+            <div ng-switch-when="true">  
+                  <input ng-model="updatedQuantity" type="number" class="form-control"  title="price">
+                  <button ng-click="editTea(tea._id,  updatedQuantity)" type="button" class="btn btn-warning">Update</button>
+            </div>
+          </div>
         </td>
         <td>
-           <!-- Cannot figure out how to send tea id !-->
            <button ng-click="deleteTea(tea._id)" type="button" class="btn btn-warning">Delete</button>
+          <button ng-click="edit=true" type="button" class="btn btn-warning">Edit</button>
         </td>
       </tr>
     </tbody>

@@ -36,4 +36,10 @@ function checkoutCtrl($scope, cartService){
     $scope.cart = cartService.getCart(); 
     $scope.total = $scope.cart.total;
   }
+  $scope.editTea = function(id, quantity){
+    cartService.editTea(id, quantity);
+    $scope.cart = cartService.getCart(); 
+    $scope.total = $scope.cart.total;
+
+  }
 }
