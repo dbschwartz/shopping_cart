@@ -1,4 +1,4 @@
-//  Initialize Controllers
+//  Initialize the Controllers
 
 angular
   .module('app')
@@ -8,10 +8,9 @@ angular
 homeCtrl.$inject = ['$scope', 'teaService', 'cartService'];
 
 function homeCtrl($scope, teaService, cartService) {
-  console.log("cool");
   $scope.teaList = teaService.getTeaList();
   $scope.addTea = function(id, quantity){
-    var tea = 
+    // var tea = // what's happening here?
     cartService.addTea(tea, quantity);
-  }
+  };
 }
