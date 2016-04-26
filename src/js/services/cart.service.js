@@ -7,7 +7,10 @@ angular
   cartService.$inject = ['teaService'];
 
   function cartService(teaService) {
-    var cart = [];
+    var cart = {
+        list: [],
+        total: 0
+    };
     return {
       getCart: function(){
         return cart
@@ -35,19 +38,21 @@ angular
         var tea = teaService.getTea(id);
         tea.quantity = quantity;
         tea.subtotal =  tea.price * quantity;
-        cart.push(tea);
+        cart.list.push(tea);
+        cart.total += tea.subtotal;
         return cart;
       },
       deleteTea: function(id) {
         console.log(id);
         var index;
-        for(var i = 0; i<cart.length; i++){
-          if(cart[i]._id===id){
+        for(var i = 0; i<cart.list.length; i++){
+          if(cart.list[i]._id===id){
             index=i;
             break;
           }
         };
-        cart.splice(index, 1);
+        cart.total -= cart.list[index].subtotal;
+        cart.list.splice(index, 1);
         console.log(cart);
         return cart;
     }

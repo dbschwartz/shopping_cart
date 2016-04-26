@@ -19,7 +19,7 @@ function homeCtrl($scope, teaService, cartService) {
     };
 
     function updateCartNotification() {
-        $scope.cartNotification = cartService.getCart().length;
+        $scope.cartNotification = cartService.getCart().list.length;
         if ($scope.cartNotification === 0) {
             $scope.cartNotification = "Empty";
         } else {
@@ -30,8 +30,10 @@ function homeCtrl($scope, teaService, cartService) {
 
 function checkoutCtrl($scope, cartService){
   $scope.cart = cartService.getCart();
+  $scope.total = $scope.cart.total;
   $scope.deleteTea = function(id){
     cartService.deleteTea(id)
-    $scope.cart = cartService.getCart();
+    $scope.cart = cartService.getCart(); 
+    $scope.total = $scope.cart.total;
   }
 }
