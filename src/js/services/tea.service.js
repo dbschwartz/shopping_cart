@@ -1,15 +1,14 @@
-//Initialize Tea Service
+// Initialize Tea Service
 
 angular
   .module('app')
-  .service('teaService', teaService)
-  .service('cartService', cartService);
+  .service('teaService', teaService);
 
 
   function teaService() {
 
     var teaList = [
-    {
+      {
         "_id": "55c8ee82152165d244b98300",
         "name": "Bayard stew",
         "ingredients": "concentrated gluten, jewelry, dill, beetle nut, toast",
@@ -20,9 +19,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32664_d?$cimg$",
         "__v": 0,
         "categories": [ "dark", "cold"]
-    },
-
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98301",
         "name": "Incompactness syrup",
         "ingredients": "fennel, nutmeg leaves, parsley, cream of 'cream of cream', blarney",
@@ -33,8 +31,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32303_d?$cimg$",
         "__v": 0,
         "categories": ["awesome"]
-    },
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98302",
         "name": "Flexner white tea",
         "ingredients": "hot sauce, iron, beetle nut, fresco, blarney, raw mashed potato",
@@ -45,8 +43,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31358_d?$cimg$",
         "__v": 0,
         "categories": ["cold"]
-    },
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98303",
         "name": "Pressor leaf",
         "ingredients": "purina chow, flavorings, pepper, acorns, quality tallow, old sock, bay leaf",
@@ -57,8 +55,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31358_d?$cimg$",
         "__v": 0,
         "categories": ["dry", "hot", "awesome"]
-    },
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98304",
         "name": "Flexner veggie tea",
         "ingredients": "cream of tartar, eggplant, cake, deer antler",
@@ -69,8 +67,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32621_d?$cimg$",
         "__v": 0,
         "categories": ["summer"]
-    },
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98305",
         "name": "Topflighter malt",
         "ingredients": "botox, toast, cream of 'cream of 'cream of cream'', kitchen scraps, beef, aligator tongue, lawn clippings",
@@ -81,8 +79,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31359_d?$cimg$",
         "__v": 0,
         "categories": ["dry","lucid","warm"]
-    },
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98306",
         "name": "Cooking mix",
         "ingredients": "flavorings, roasted mushrooms, toast, tumeric",
@@ -93,8 +91,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32303_d?$cimg$",
         "__v": 0,
         "categories": ["summer"]
-    },
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98307",
         "name": "Cooking stew",
         "ingredients": "eggplant",
@@ -105,8 +103,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31358_d?$cimg$",
         "__v": 0,
         "categories": ["dry","winter","lucid"]
-    },
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98308",
         "name": "Prevenient herb tea",
         "ingredients": "cream of tartar, cream of cream, kitchen scraps, flavorings",
@@ -117,8 +115,8 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32174_d?$cimg$",
         "__v": 0,
         "categories": ["lucid","hot"]
-    },
-    {
+      },
+      {
         "_id": "55c8ee82152165d244b98309",
         "name": "Angular mix",
         "ingredients": "hot sauce, lawn clippings, fennel, parsley, quinine",
@@ -129,82 +127,63 @@ angular
         "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32621_d?$cimg$",
         "__v": 0,
         "categories": ["spring", "warm","winter"]
-    }
-  ];
+      }
+    ];
 
-var formattedTeaList = [];
+  var formattedTeaList = [];
 
   function listFormatter(teaList) {
-      formattedList = teaList.map(function(currentObj){
-        var instanceObj = {};
-        instanceObj._id = currentObj._id;
-        instanceObj.name = currentObj.name;
-        instanceObj.ingredients = currentObj.ingredients;
-        instanceObj.caffeineScale = currentObj.caffeineScale;
-        instanceObj.price = currentObj.price;
+    formattedList = teaList.map(function(currentObj){
+      var instanceObj = {};
+      instanceObj._id = currentObj._id;
+      instanceObj.name = currentObj.name;
+      instanceObj.ingredients = currentObj.ingredients;
+      instanceObj.caffeineScale = currentObj.caffeineScale;
+      instanceObj.price = currentObj.price;
 
-        if (currentObj.inStock===true){
-          instanceObj.inStock = "yes";
-        }
-        else {
-          instanceObj.inStock = "no";
-        }
+      if (currentObj.inStock===true){
+        instanceObj.inStock = "yes";
+      }
+      else {
+        instanceObj.inStock = "no";
+      }
 
-        instanceObj.rating = currentObj.rating;
-        instanceObj.imageUrl = currentObj.imageUrl;
-        instanceObj.__v = currentObj.__v;
-        instanceObj.categories = currentObj.categories;
-        return instanceObj;
-
-      });
-      return formattedList;
- 
+      instanceObj.rating = currentObj.rating;
+      instanceObj.imageUrl = currentObj.imageUrl;
+      instanceObj.__v = currentObj.__v;
+      instanceObj.categories = currentObj.categories;
+      return instanceObj;
+    });
+    return formattedList;
   }
 
-    function categoryCreator (formattedTeaList) {
-      var categories = [];
-      formattedTeaList.forEach(function(eachTeaObject){
-        eachTeaObject.categories.forEach(function(eachTeaCategory){
-          if(categories.indexOf(eachTeaCategory)===-1){
-            categories.push(eachTeaCategory);
-          }
-        });
+  function categoryCreator (formattedTeaList) {
+    var categories = [];
+    formattedTeaList.forEach(function(eachTeaObject){
+      eachTeaObject.categories.forEach(function(eachTeaCategory){
+        if(categories.indexOf(eachTeaCategory) === -1) {
+          categories.push(eachTeaCategory);
+        }
       });
-      return categories;
-    }
+    });
+    return categories;
+  }
 
-  
+
   return {
 
     getTeaList: function() {
-
-    var formattedTeaList = listFormatter(teaList);
-    formattedTeaList.categories = categoryCreator(formattedTeaList);
-    console.log(formattedTeaList);
-    return formattedTeaList;
+      var formattedTeaList = listFormatter(teaList);
+      formattedTeaList.categories = categoryCreator(formattedTeaList);
+      return formattedTeaList;
     },
-
-    getTea: function(id){
-        formattedTeaList.forEach(function(tea){
-            if(eachTeaObject.id===id){
-             return tea;
-            }
-        });
+    getTea: function(id) {
+      formattedTeaList.forEach(function(tea) {
+        if(eachTeaObject.id===id) {
+         return tea;
+        }
+      });
     }
   };
-}
-cartService.$inject = ['teaService'];
-  function cartService(teaService) {
-    var cart = [];
-    return {
-      addTea: function(id, quantity) {
-        console.log(id);
-        var tea = teaService.getTea(id);
-        tea.quantity = quantity;
-        tea.subtotal =  tea.price/100 * quantity;
-        cart.push(tea);
-        console.log(cart);
-        return cart;
-     }
-  };
+
 }

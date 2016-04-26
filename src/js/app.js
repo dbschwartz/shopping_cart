@@ -1,2 +1,2 @@
 // App Declaration
-angular.module('app', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ngRoute']);
+angular.module('app', ['ngRoute']);
