@@ -51,10 +51,6 @@ angular
         return cart;
       },
       editTea: function(id, quantity){
-<<<<<<< HEAD
-        console.log(quantity);
-=======
->>>>>>> 812343459289265d3c1852a752d71f0ca89df315
         var index;
         for(var i = 0; i<cart.list.length; i++){
           if(cart.list[i]._id===id){
