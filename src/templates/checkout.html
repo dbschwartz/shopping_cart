@@ -27,7 +27,6 @@
             <div ng-switch-when="false">{{tea.quantity}}</div>
             <div ng-switch-when="true">  
                   <input ng-model="updatedQuantity" type="number" class="form-control"  title="quantiy" value="{{tea.quantity}}">
-                  <button ng-click="edit=false; editTea(tea._id,  updatedQuantity)" type="button" class="btn btn-warning">Update</button>
             </div>
           </div>
         </td>
