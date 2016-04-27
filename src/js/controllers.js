@@ -14,7 +14,7 @@ function homeCtrl($scope, teaService, cartService) {
 
     $scope.addTea = function(id, quantity) {
         var cart = cartService.addTea(id, quantity);
-        console.log(cart);
+        cartService.getTotal()
         updateCartNotification()
     };
 
@@ -38,6 +38,7 @@ function checkoutCtrl($scope, cartService){
   }
   $scope.editTea = function(id, quantity){
     cartService.editTea(id, quantity);
+    cartService.getTotal()
     $scope.cart = cartService.getCart(); 
     $scope.total = $scope.cart.total;
 

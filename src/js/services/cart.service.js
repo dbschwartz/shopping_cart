@@ -16,11 +16,13 @@ angular
         return cart
       },
       getTotal: function(){
-        var total;
-        cart.list.forEach(function(teaObject){
-          total+=subtotal;
+        var total = 0;
+        cart.list.forEach(function(teaObject){  
+          total= total + teaObject.subtotal;
+    
         })
-        return total;
+        cart.total = total;
+
       },
       addTea: function(id, quantity) {
         // var selectedItem = ( some for loop / filter that finds the item )
@@ -35,11 +37,14 @@ angular
           quantity = parseInt(quantity);  
         }
     
-        for(var i = 0; i<cart.length; i++){
+        for(var i = 0; i<cart.list.length; i++){
           if(cart.list[i]._id===id){
-            cart.list[i].quantity = cart.list[i].quantity + quantity;
+            console.log(cart.list[i].quantity);
+            cart.list[i].quantity =  cart.list[i].quantity + quantity;
             cart.list[i].subtotal =  cart.list[i].price * cart.list[i].quantity;
+            console.log(cart);
             return cart;
+            break;
           }
         }
         var tea = teaService.getTea(id);
@@ -47,6 +52,7 @@ angular
         tea.subtotal =  tea.price * quantity;
         cart.list.push(tea);
         cart.total += tea.subtotal;
+        console.log(cart);
         return cart;
       },
       editTea: function(id, quantity){
@@ -60,7 +66,6 @@ angular
         };
         cart.list[index].quantity = quantity;
         cart.list[index].subtotal = cart.list[index].price * quantity;
-        cartService.getTotal()
 
       },
       deleteTea: function(id) {
