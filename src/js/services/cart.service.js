@@ -8,43 +8,39 @@ angular
 
   function cartService(teaService) {
     var cart = {
-        list: [],
-        total: 0
+      list: [],
+      total: 0
     };
     return {
       getCart: function(){
-        return cart
+        return cart;
       },
       getTotal: function(){
-        var total = 0;
-        cart.list.forEach(function(teaObject){  
-          total= total + teaObject.subtotal;
-    
-        })
-        cart.total = total;
-
+        var tempTotal = 0;
+        cart.list.forEach(function(teaObject){
+          tempTotal += teaObject.subtotal;
+        });
+        cart.total = tempTotal;
       },
       addTea: function(id, quantity) {
         // var selectedItem = ( some for loop / filter that finds the item )
-        
+
         // if ( selectedItem ) {
         // then add to quantity
         // else add new item with quantity
-        
-        if(quantity===undefined){
+
+        if(!quantity){
           quantity=1;
         }else{
-          quantity = parseInt(quantity);  
+          quantity = parseInt(quantity);
         }
-    
+
+
         for(var i = 0; i<cart.list.length; i++){
           if(cart.list[i]._id===id){
-            console.log(cart.list[i].quantity);
             cart.list[i].quantity =  cart.list[i].quantity + quantity;
             cart.list[i].subtotal =  cart.list[i].price * cart.list[i].quantity;
-            console.log(cart);
             return cart;
-            break;
           }
         }
         var tea = teaService.getTea(id);
@@ -52,18 +48,20 @@ angular
         tea.subtotal =  tea.price * quantity;
         cart.list.push(tea);
         cart.total += tea.subtotal;
-        console.log(cart);
         return cart;
       },
       editTea: function(id, quantity){
+<<<<<<< HEAD
         console.log(quantity);
+=======
+>>>>>>> 812343459289265d3c1852a752d71f0ca89df315
         var index;
         for(var i = 0; i<cart.list.length; i++){
           if(cart.list[i]._id===id){
             index=i;
             break;
           }
-        };
+        }
         cart.list[index].quantity = quantity;
         cart.list[index].subtotal = cart.list[index].price * quantity;
 
@@ -75,11 +73,10 @@ angular
             index=i;
             break;
           }
-        };
+        }
         cart.total -= cart.list[index].subtotal;
         cart.list.splice(index, 1);
-        console.log(cart);
         return cart;
-    }
-  };
-}
+      }
+    };
+  }
