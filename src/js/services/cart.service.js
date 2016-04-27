@@ -56,7 +56,7 @@ angular
         return cart;
       },
       editTea: function(id, quantity){
-        console.log("working");
+        console.log(quantity);
         var index;
         for(var i = 0; i<cart.list.length; i++){
           if(cart.list[i]._id===id){

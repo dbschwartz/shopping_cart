@@ -26,14 +26,14 @@
           <div ng-switch="edit">
             <div ng-switch-when="false">{{tea.quantity}}</div>
             <div ng-switch-when="true">  
-                  <input ng-model="updatedQuantity" type="number" class="form-control"  title="quantiy" value="{{tea.quantity}}">
+                  <input ng-model="this.updatedQuantity" type="number" class="form-control"  title="this.updatedQuantity" value="{{tea.quantity}}">
             </div>
           </div>
         </td>
         <td>
            <button ng-click="deleteTea(tea._id)" type="button" class="btn btn-warning">Delete</button>
           <button ng-click="edit=true" type="button" class="btn btn-warning">Edit</button>
-          <button ng-click="edit=false" type="button" class="btn btn-warning">Done Editing</button>
+          <button ng-click="editTea(tea._id, this.updatedQuantity); edit=false" type="button" class="btn btn-warning">Done Editing</button>
            {{edit}}
         </td>
       </tr>
