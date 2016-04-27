@@ -155,7 +155,7 @@ angular
     });
   }
 
-  var formattedTeaList = listFormatter(teaList)
+  var formattedTeaList = listFormatter(teaList);
 
   // function listFormatter(teaList) {
   //   return teaList.map(function(currentObj) {
@@ -184,7 +184,6 @@ angular
 
 
   return {
-
     getTeaList: function() {
       formattedTeaList.categories = categoryCreator(formattedTeaList);
       return formattedTeaList;
@@ -193,9 +192,8 @@ angular
       for(var i = 0; i<formattedTeaList.length; i++){
         if(formattedTeaList[i]._id===id) {
           return formattedTeaList[i];
-          break;
         }
-      };
+      }
     }
   };
 
