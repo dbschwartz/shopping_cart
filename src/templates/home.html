@@ -3,10 +3,19 @@
   <div class="panel panel-danger pull-right">
     <div class="panel-heading"><a href="#/checkout">Checkout</a> | Bag: {{cartNotification}}</div>
   </div>
-  <div class="panel-body">
-    Category: <select ng-model="teaCategory"
-                      ng-options="category for category in teaList.categories"></select>
+
+  <div class="row">
+      <div class="col-md-2 panel-body">
+        Category: <select ng-model="teaCategory"
+                          ng-options="category for category in teaList.categories"></select>
+      </div>
+      <div class="col-md-3 panel-body">
+         <form>
+          Search  <input type="text" ng-model="search"><br>
+        </form>
+    </div>
   </div>
+  
 
   <table class="table table-bordered">
     <thead>
@@ -17,7 +26,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="tea in teaList | filter:{categories: teaCategory}">
+      <tr ng-repeat="tea in teaList | filter: search | filter:{categories: teaCategory} ">
         <td>
             <img ng-src="{{tea.imageUrl}}">
         </td>
