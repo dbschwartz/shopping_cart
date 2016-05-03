@@ -3,7 +3,10 @@
   <div class="panel panel-danger pull-right">
     <div class="panel-heading"><a href="#/checkout">Checkout</a> | Bag: {{cartNotification}}</div>
   </div>
-
+  <div class="panel-body">
+    Category: <select ng-model="teaCategory"
+                      ng-options="category for category in teaList.categories"></select>
+  </div>
 
   <table class="table table-bordered">
     <thead>
@@ -14,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="tea in teaList">
+      <tr ng-repeat="tea in teaList | filter:{categories: teaCategory}">
         <td>
             <img ng-src="{{tea.imageUrl}}">
         </td>
