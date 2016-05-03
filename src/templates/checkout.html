@@ -22,20 +22,20 @@
               <li>{{category}}</li>
             </ul>
         </td>
-        <td ng-init="edit=false">
-          <div ng-switch="edit">
-            <div ng-switch-when="false">{{tea.quantity}}</div>
-            <div ng-switch-when="true">
-              <input ng-model="updatedQuantity" type="number" class="form-control" title="quantity" value="{{tea.quantity}}">
-              <button ng-click="editTea(tea._id, this.updatedQuantity)" type="button" class="btn btn-warning">Update</button>
+        <td>    
+          <div>
+            <div ng-hide="tea.edit">{{tea.quantity}}</div>
+            <div ng-show="tea.edit">
+              <input ng-model="tea.quantity" type="number" class="form-control" title="quantity">
+              <button ng-click="editTea(tea._id, tea.quantity); tea.edit=false" type="button" class="btn btn-warning">Update</button>
             </div>
           </div>
         </td>
         <td>
           <button ng-click="deleteTea(tea._id)" type="button" class="btn btn-warning">Delete</button>
-          <button ng-click="edit=true" type="button" class="btn btn-warning">Edit</button>
-          <button ng-click="edit=false" type="button" class="btn btn-warning">Done Editing</button>
-        </td>
+          <button ng-click="tea.edit=true" type="button" class="btn btn-warning">Edit</button>
+<!--           <button ng-click="edit=false" type="button" class="btn btn-warning">Done Editing</button>
+ -->        </td>
       </tr>
     </tbody>
   </table>
